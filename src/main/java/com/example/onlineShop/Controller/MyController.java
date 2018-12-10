@@ -1,11 +1,14 @@
-package com.example.onlineShop;
+package com.example.onlineShop.Controller;
 
+import com.example.onlineShop.ShoesRepository;
 import com.example.onlineShop.models.Shoe;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.Arrays;
 
 @Controller
 @RequestMapping(path = "/shoe")
@@ -24,7 +27,8 @@ public class MyController {
     }
 
     @RequestMapping(path = "/all")
-    public @ResponseBody Iterable<Shoe> getAll() {
-        return shoesRepository.findAll();
+    public String getAll() {
+
+        return Arrays.toString(shoesRepository.findAll().toArray());
     }
 }
